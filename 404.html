@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Scratch Kitchen by Gallo's</title>
+<script>
+/* Pretty-URL compatibility + graceful 404.
+   Old links used a ".html" extension; the site now uses extensionless,
+   directory-based URLs (e.g. /about.html -> /about, /index.html -> /).
+   Redirect any legacy .html request to its new location before showing
+   the not-found page, so existing bookmarks and search results keep working. */
+(function () {
+  try {
+    var p = window.location.pathname;
+    var target = null;
+    if (/\/index\.html$/i.test(p)) {
+      // /index.html or /any/dir/index.html -> the directory root
+      target = p.replace(/\/index\.html$/i, "/");
+    } else if (/\.html$/i.test(p) && !/\.dc\.html$/i.test(p)) {
+      // /about.html -> /about   (leave .dc.html design files alone)
+      target = p.replace(/\.html$/i, "");
+    }
+    if (target && target !== p) {
+      window.location.replace(target + window.location.search + window.location.hash);
+    }
+  } catch (e) {}
+})();
+</script>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: #1a1813;
+    color: #faf6ee;
+    font-family: Georgia, 'Cormorant Garamond', 'Times New Roman', serif;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 2rem;
+  }
+  .wrap { max-width: 32rem; }
+  img { width: 96px; height: auto; margin-bottom: 1.5rem; opacity: .95; }
+  h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin: 0 0 .5rem; color: #f7d289; font-weight: 400; letter-spacing: .02em; }
+  p { font-size: 1.1rem; line-height: 1.6; color: rgba(250,246,238,.75); margin: 0 0 2rem; }
+  a.home {
+    display: inline-block; text-decoration: none;
+    border: 1px solid #f7d289; color: #f7d289;
+    padding: .75rem 2rem; border-radius: 2px;
+    letter-spacing: .14em; text-transform: uppercase; font-size: .8rem;
+    font-family: system-ui, -apple-system, sans-serif;
+    transition: background .2s, color .2s;
+  }
+  a.home:hover { background: #f7d289; color: #1a1813; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <img src="/brand/logo-scratch.png" alt="The Scratch Kitchen by Gallo's">
+    <h1>Page not found</h1>
+    <p>Sorry, we couldn&rsquo;t find the page you were looking for. It may have moved or no longer exists.</p>
+    <a class="home" href="/">Return home</a>
+  </div>
+</body>
+</html>

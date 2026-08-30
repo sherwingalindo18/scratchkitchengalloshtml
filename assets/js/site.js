@@ -13,7 +13,7 @@
 
     /* ----- Header light/solid state ----- */
     var navLinks = nav ? Array.prototype.slice.call(nav.querySelectorAll("ul.lg\\:flex a")) : [];
-    var orderBtn = nav ? nav.querySelector('a[href$="order.html"].btn-ghost-light, a[href$="order.html"].btn-ghost') : null;
+    var orderBtn = nav ? nav.querySelector('a[href$="/order"].btn-ghost-light, a[href$="/order"].btn-ghost') : null;
     var burger = nav ? nav.querySelector('button[aria-label="Open menu"], button[aria-label="Close menu"]') : null;
     var state = { scrolled: false, dropdown: false, mobile: false };
 
